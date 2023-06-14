@@ -5,13 +5,15 @@ const heightLimit = 150;
 const numberOfLayers = 75;
 const incrementSize = heightLimit / numberOfLayers;
 
-const draw = (p5) => {
+const setup = (p5) => {
   p5.frameRate(30);
   p5.textAlign(p5.CENTER, p5.CENTER);
-  p5.textStyle(p5.ITALIC);
+  p5.textStyle(p5.BOLDITALIC);
   p5.textSize(64 * 3);
   p5.strokeWeight(5);
+};
 
+const draw = (p5) => {
   p5.translate(p5.width / 2, p5.height / 2);
   p5.background("#1b1b1b");
 
@@ -62,4 +64,4 @@ const draw = (p5) => {
   angle += 0.1;
 };
 
-export default draw;
+export default { draw, setup };

@@ -2,30 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Echo by Romello Goodman</title>
     <script type="module" src="/p5.min.js"></script>
+    <link rel="stylesheet" href="/public/public-sans/public-sans.css">
   </head>
   <body>
-    <main>
-      <h2 class="title">THIS IS <span>ECHO.</span></h2>
+    <header>
+      <div class="overlay-text">
+        <h2 class="title">THIS IS <span>ECHO.</span></h2>
+        <p class="instructions">Click to change the sketch.</p>
+      </div>
       <div id="canvas-wrapper"></div>
-      <p class="instructions">(Click to change the sketch.)</p>
-      <p class="description">Echo is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-      aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </header>
+    <main>
+      <!-- <p class="instructions">(Click to change the sketch.)</p> -->
+      <p class="description">Echo is a design language using rhythm and repetition to create still kinetic typography pieces. Created by <a href="https://romellogoodman.com">Romello Goodman</a> it lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <h2 class="in-use">Echo in use</h2>
       <div class="in-use-grid">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <figure>
+          <div class="placeholder"></div>
+          <figcaption>For Cooper Union Generative Typography Workshop</figcaption>
+        </figure>
+        <figure>
+          <div class="placeholder"></div>
+          <figcaption>For Cooper Union p5.js for Visual Designers Workshop</figcaption>
+        </figure>
+        <figure>
+          <div class="placeholder"></div>
+          <figcaption>For MICA Generative Typography (GD 405) Speaker Series</figcaption>
+        </figure>
+        <figure>
+          <div class="placeholder"></div>
+          <figcaption>For MICA Generative Typography (GD 405) Speaker Series</figcaption>
+        </figure>
       </div>
-      <p>
-        Thank you for viewing. Check out more of my work at <a href="https://romellogoodman.com">romellogoodman.com</a>
-      </p>
     </main>
     <script type="module" src="/main.js"></script>
   </body>
