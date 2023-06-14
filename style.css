@@ -108,6 +108,12 @@ header, #canvas-wrapper {
   gap: 32px;
 }
 
+@media screen and (max-width: 800px) {
+  .in-use-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 .in-use-grid .image-card img {
   width: 100%;
 }
