@@ -1,3 +1,17 @@
+/* Reset */
+
+* {
+  vertical-align: baseline;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+}
+
+/* Styles */
+
 body {
   background-color: #eee;
   color: #1b1b1b;
@@ -22,6 +36,12 @@ a {
   color: #2188ff;
 }
 
+
+header p,
+header h2 {
+  margin: 0px;
+}
+
 .overlay-text {
   position: absolute;
   top: 0;
@@ -32,6 +52,7 @@ a {
   justify-content: space-between;
   flex-direction: column;
   height: 100%;
+  padding: 24px 0px 48px;
 }
 
 header, #canvas-wrapper {
@@ -84,9 +105,8 @@ header, #canvas-wrapper {
   gap: 32px;
 }
 
-.in-use-grid .placeholder {
-  background-color: #dddddd;
-  aspect-ratio: 1/1;
+.in-use-grid .image-card img {
+  width: 100%;
 }
 
 .in-use-grid figure {
