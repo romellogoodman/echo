@@ -1,17 +1,9 @@
-let angle = 0;
-let anchorX = 0;
-let anchorY = 0;
 const heightLimit = 150;
 const numberOfLayers = 75;
 const incrementSize = heightLimit / numberOfLayers;
-
-const setup = (p5) => {
-  p5.frameRate(30);
-  p5.textAlign(p5.CENTER, p5.CENTER);
-  p5.textStyle(p5.BOLDITALIC);
-  p5.textSize(64 * 3);
-  p5.strokeWeight(5);
-};
+let angle = 0;
+let anchorX = 0;
+let anchorY = 0;
 
 const draw = (p5) => {
   p5.translate(p5.width / 2, p5.height / 2);
@@ -48,8 +40,8 @@ const draw = (p5) => {
     const isLastStep = layerHeight + incrementSize > waveHeight;
 
     if (isLastStep) {
-      p5.stroke("white");
-      p5.fill("white");
+      p5.stroke("#ffffff");
+      p5.fill("#ffffff");
     } else {
       const opacity = p5.map(layerHeight, 0, heightLimit, 0.25, 1);
 
@@ -64,4 +56,4 @@ const draw = (p5) => {
   angle += 0.1;
 };
 
-export default { draw, setup };
+export default { draw };
