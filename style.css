@@ -24,18 +24,21 @@ main {
   max-width: 1200px;
   margin: 0px auto 48px;
   position: relative;
-  padding: 16px
-}
-
-header {
-  position: relative;
-  color: #ffffff;
+  padding: 16px;
 }
 
 a {
   color: #2188ff;
 }
 
+h2 {
+  font-size: 32px;
+}
+
+header {
+  position: relative;
+  color: #ffffff;
+}
 
 header p,
 header h2 {
