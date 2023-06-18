@@ -38,6 +38,7 @@ h2 {
 header {
   position: relative;
   color: #ffffff;
+  cursor: pointer;
 }
 
 header p,
@@ -59,7 +60,7 @@ header h2 {
 }
 
 header, #canvas-wrapper {
-  min-height: 86vh;
+  height: 70vh;
 }
 
 #canvas-wrapper {

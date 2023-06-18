@@ -1,59 +1,31 @@
-const heightLimit = 150;
-const numberOfLayers = 75;
-const incrementSize = heightLimit / numberOfLayers;
-let angle = 0;
-let anchorX = 0;
-let anchorY = 0;
-
-const draw = (p5) => {
+const draw = (p5, input = {}) => {
   p5.translate(p5.width / 2, p5.height / 2);
   p5.background("#1b1b1b");
 
-  let waveHeight = p5.map(p5.sin(angle), -1, 1, 0, heightLimit);
+  const numberOfLayers = input.layers || 75;
+  const maxHeight = p5.height * 0.4;
+  const angle = p5.frameCount * 0.075;
+  const currentHeight = p5.map(p5.sin(angle), -1, 1, 0, maxHeight);
 
-  for (
-    let layerHeight = 0;
-    layerHeight <= waveHeight;
-    layerHeight += incrementSize
-  ) {
-    let textX;
-    let textY;
-
-    if (!anchorX || dontFollow) {
-      textX = 0;
-    } else if (anchorX > 0) {
-      textX = p5.map(layerHeight, 0, heightLimit, 0, anchorX);
-    } else {
-      textX = p5.map(-layerHeight, -heightLimit, 0, anchorX, 0);
-    }
-
-    if (!anchorY || dontFollow) {
-      textY = 0 - layerHeight;
-    } else if (anchorY > 0) {
-      textY = p5.map(layerHeight, 0, heightLimit, 0, anchorY);
-    } else {
-      textY = map(-layerHeight, -heightLimit, 0, anchorY, 0);
-    }
-
+  for (let layer = 0; layer < numberOfLayers; layer++) {
     p5.push();
 
-    const isLastStep = layerHeight + incrementSize > waveHeight;
+    const layerHeight = p5.map(layer, 0, numberOfLayers - 1, 0, currentHeight);
 
-    if (isLastStep) {
+    // Fill in the last layer
+    if (layer === numberOfLayers - 1) {
       p5.stroke("#ffffff");
       p5.fill("#ffffff");
     } else {
-      const opacity = p5.map(layerHeight, 0, heightLimit, 0.25, 1);
+      const opacity = p5.map(layer, 0, numberOfLayers, 0.1, 0.5);
 
       p5.stroke(`rgba(255, 255, 255, ${opacity})`);
     }
 
-    p5.text("echo", textX, textY);
+    p5.text("echo", 0, 0 - layerHeight);
 
     p5.pop();
   }
-
-  angle += 0.1;
 };
 
 export default { draw };

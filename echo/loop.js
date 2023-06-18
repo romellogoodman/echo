@@ -14,7 +14,7 @@ function addEcho(x, y) {
   list.push(pos);
 }
 
-function draw(p5) {
+function draw(p5, input = {}) {
   p5.background("#1b1b1b");
   p5.stroke("#ffffff");
   p5.fill("#1b1b1b");

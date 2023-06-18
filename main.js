@@ -3,13 +3,36 @@ import "./style.css";
 import accordian from "./echo/accordian";
 import accordianLetters from "./echo/accordian-letters";
 import bounce from "./echo/bounce";
-import loop from "./echo/loop";
+// TODO: Refactor and add
+// import loop from "./echo/loop";
 import wave from "./echo/wave";
 
+// Taken From: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+const shuffleArray = (array) => {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+};
+
 let can;
+let layers = 75;
 let publicSans;
-let sketchIndex = 2;
-const sketches = [accordian, accordianLetters, bounce, loop, wave];
+let sketchIndex = 0;
+let sketches = shuffleArray([accordian, accordianLetters, bounce, wave]);
 
 new p5((sketch) => {
   sketch.preload = (a) => {
@@ -33,10 +56,10 @@ new p5((sketch) => {
   };
 
   sketch.draw = () => {
-    sketches[sketchIndex].draw(sketch);
+    sketches[sketchIndex].draw(sketch, { layers });
   };
 
-  sketch.mouseClicked = () => {
+  sketch.mousePressed = () => {
     sketchIndex = (sketchIndex + 1) % sketches.length;
 
     if (sketches[sketchIndex].setup) sketches[sketchIndex].setup(sketch);
