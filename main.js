@@ -35,7 +35,7 @@ let sketchIndex = 0;
 let sketches = shuffleArray([accordian, accordianLetters, bounce, wave]);
 
 new p5((sketch) => {
-  sketch.preload = (a) => {
+  sketch.preload = () => {
     publicSans = sketch.loadFont("./public-sans/PublicSans-BoldItalic.ttf");
   };
 
