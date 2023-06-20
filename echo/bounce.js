@@ -1,7 +1,9 @@
 let list = [];
 // bounds of the phrase
-const boundsX = 430;
-const boundsY = 180;
+const defaultBondsX = 430;
+const defaultBondsY = 180;
+let boundsX = defaultBondsX;
+let boundsY = defaultBondsY;
 // Starting position of shape
 let posX, posY;
 // Speed of the shape
@@ -42,6 +44,11 @@ const draw = (p5, input = {}) => {
   p5.fill("#1b1b1b");
 
   const numberOfLayers = input.layers || 75;
+
+  if (input.canvasScale) {
+    boundsX = defaultBondsX * input.canvasScale;
+    boundsY = defaultBondsY * input.canvasScale;
+  }
 
   list.forEach((item) => {
     if (!item) return;

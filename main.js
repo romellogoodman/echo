@@ -31,8 +31,10 @@ const shuffleArray = (array) => {
 let can;
 let layers = 75;
 let publicSans;
+let canvasScale = 1;
 let sketchIndex = 0;
 let sketches = shuffleArray([accordian, accordianLetters, bounce, wave]);
+const defaultFontSize = 64 * 3;
 
 new p5((sketch) => {
   sketch.preload = () => {
@@ -49,14 +51,15 @@ new p5((sketch) => {
     sketch.textFont(publicSans);
     sketch.textAlign(sketch.CENTER, sketch.CENTER);
     sketch.textStyle(sketch.BOLDITALIC);
-    sketch.textSize(64 * 3);
     sketch.strokeWeight(5);
 
     if (sketches[sketchIndex].setup) sketches[sketchIndex].setup(sketch);
   };
 
   sketch.draw = () => {
-    sketches[sketchIndex].draw(sketch, { layers });
+    sketch.textSize(defaultFontSize * canvasScale);
+
+    sketches[sketchIndex].draw(sketch, { canvasScale, layers });
   };
 
   sketch.mousePressed = () => {
@@ -67,6 +70,12 @@ new p5((sketch) => {
 
   sketch.windowResized = () => {
     const canvasEl = document.querySelector("#canvas-wrapper");
+
+    if (canvasEl.clientWidth < 600) {
+      canvasScale = 0.5;
+    } else {
+      canvasScale = 1;
+    }
 
     sketch.resizeCanvas(canvasEl.clientWidth, canvasEl.clientHeight);
   };
