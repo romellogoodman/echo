@@ -36,12 +36,24 @@ let sketchIndex = 0;
 let sketches = shuffleArray([accordian, accordianLetters, bounce, wave]);
 const defaultFontSize = 64 * 3;
 
+const checkCanvsScale = () => {
+  const canvasEl = document.querySelector("#canvas-wrapper");
+
+  if (canvasEl.clientWidth < 600) {
+    canvasScale = 0.5;
+  } else {
+    canvasScale = 1;
+  }
+};
+
 new p5((sketch) => {
   sketch.preload = () => {
     publicSans = sketch.loadFont("./public-sans/PublicSans-BoldItalic.ttf");
   };
 
   sketch.setup = () => {
+    checkCanvsScale();
+
     const canvasEl = document.querySelector("#canvas-wrapper");
 
     can = sketch.createCanvas(canvasEl.clientWidth, canvasEl.clientHeight);
@@ -71,11 +83,7 @@ new p5((sketch) => {
   sketch.windowResized = () => {
     const canvasEl = document.querySelector("#canvas-wrapper");
 
-    if (canvasEl.clientWidth < 600) {
-      canvasScale = 0.5;
-    } else {
-      canvasScale = 1;
-    }
+    checkCanvsScale();
 
     sketch.resizeCanvas(canvasEl.clientWidth, canvasEl.clientHeight);
   };
